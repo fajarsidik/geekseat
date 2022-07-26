@@ -1,12 +1,18 @@
 import React from 'react';
-
-import { Header } from './Header';
+import PropTypes from 'prop-types';
 import './divider.scss';
 
-export const Divider = () => {
+export const Divider = ({ alignment, line, weight, label, ...props }) => {
   const [user, setUser] = React.useState();
 
   return (
+    <div 
+      className={['divider',`divider--${alignment}`,`divider--${line}`, `divider--${weight}`].join(' ')} 
+      {...props}
+      >
+        {label}
+    </div>    
+    /*
     <article>
       <section>
         <div className="row">
@@ -48,5 +54,29 @@ export const Divider = () => {
         </div>
       </section>
     </article>
+    */
   );
+};
+
+Divider.propTypes = {
+ 
+  alignment: PropTypes.oneOf(['start', 'center', 'end']),
+ 
+  line: PropTypes.oneOf(['solid', 'dashed', 'dotted']),
+
+  weight: PropTypes.oneOf(['light', 'regular', 'heavy']),
+  
+  label: PropTypes.string.isRequired,
+  /**
+   * Optional click handler
+   */
+  onClick: PropTypes.func,
+};
+
+Divider.defaultProps = {  
+  alignment: 'start',
+  weight: 'regular',
+  line: 'solid',
+  label: 'Start',
+  onClick: undefined,
 };
