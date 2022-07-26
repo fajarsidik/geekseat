@@ -1,0 +1,4 @@
+$primary: #e829ad;
+$secondary: #3e3e3e;
+$font-size-base: 0.938rem; //bootstrap error when calculate px to rem, so i convert it px to rem
+@import '../src/assets/scss/bootstrap.scss'
